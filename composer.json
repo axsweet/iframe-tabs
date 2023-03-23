@@ -3,20 +3,14 @@
     "description": "laravel-admin extension iframe-tabs",
     "type": "library",
     "keywords": ["laravel-admin", "extension"],
-    "homepage": "https://github.com/ichynul/iframe-tabs",
+    "homepage": "https://github.com/axsweet/iframe-tabs",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "ichynul",
-            "email": "ichynul@outlook.com"
-        }
-    ],
     "require": {
-        "php": ">=7.0.0",
-        "encore/laravel-admin": "~1.5"
+        "php": "*",
+        "encore/laravel-admin": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "~6.0"
+        "phpunit/phpunit": "*"
     },
     "autoload": {
         "psr-4": {
