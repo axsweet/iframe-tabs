@@ -195,11 +195,11 @@ body,
 }
 
 .sidebar-menu .treeview ul.treeview-menu > li > a::before {
-    content: "---";
+    content: "    ";
 }
 
 .sidebar-menu .treeview ul.treeview-menu > li::before {
-    content: "¦";
+    content: "   ";
     float: left;
     margin-left: 20px;
     color: #8aa4af;
