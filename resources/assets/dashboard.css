@@ -195,7 +195,8 @@ body,
 }
 
 .sidebar-menu .treeview ul.treeview-menu > li > a::before {
-    content: "    ";
+    content: "   ";
+    padding-left:5px
 }
 
 .sidebar-menu .treeview ul.treeview-menu > li::before {
