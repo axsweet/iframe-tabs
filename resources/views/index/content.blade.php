@@ -15,6 +15,8 @@
 
         window.refresh_current = "{{ $trans['refresh_current'] }}";
         window.open_in_new = "{{ $trans['open_in_new'] }}";
+        window.book_mark_me = "Bookmark Tab";
+
         window.open_in_pop = "{{ $trans['open_in_pop'] }}";
         window.refresh_succeeded = "{{ $trans['refresh_succeeded'] }}";
 

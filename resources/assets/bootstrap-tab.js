@@ -700,6 +700,30 @@ $(function () {
                 window.open(url);
 
             }
+        },
+        {
+            text: window.book_mark_me,
+            action: function (e, $selector, rightClickEvent) {
+                var pageId = getPageId(findTabElement(rightClickEvent.target));
+                var url = getTabUrlById(pageId);
+                    var title = document.title.split('|').pop().trim();
+
+                    $.ajax({
+                        type: 'post',
+                        url: '/api/user-bookmarks',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        data: {
+                            uri: url,
+                            title: title
+                        },
+                        success (data) {
+                            toastr.success(data.message);
+                            window.location.reload();
+                        }
+                    });
+            }
         }
     ]);
 });
