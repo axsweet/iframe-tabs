@@ -720,7 +720,6 @@ $(function () {
                         },
                         success (data) {
                             toastr.success(data.message);
-                            window.location.reload();
                         }
                     });
             }
