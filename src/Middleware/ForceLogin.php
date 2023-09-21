@@ -4,7 +4,7 @@ namespace Ichynul\IframeTabs\Middleware;
 
 use Closure;
 use Ichynul\IframeTabs\IframeTabs;
-
+use Illuminate\Http\Request;
 class ForceLogin
 {
     /**
@@ -16,6 +16,7 @@ class ForceLogin
      */
     public function handle($request, Closure $next)
     {
+
         $response = $next($request);
 
         if (!IframeTabs::boot()) {
