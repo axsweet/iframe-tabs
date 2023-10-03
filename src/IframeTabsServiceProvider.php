@@ -83,7 +83,12 @@ class IframeTabsServiceProvider extends ServiceProvider
                     Admin::css(preg_replace('/^(.+)layer\.js.*$/i', '$1theme/default/layer.css?v=iframe-tabs', $layer_path));
                 }
 
-                if (\Request::route()->getName() == 'iframes.index') {
+                if(!is_null(\Request::route())) {
+                    $name = \Request::route()->getName();
+                }else{
+                    $name = 'dicks';
+                }
+                if ($name == 'iframes.index') {
                     //Override view index hide partials.footer
                     \View::prependNamespace('admin', __DIR__ . '/../resources/views/index');
 
