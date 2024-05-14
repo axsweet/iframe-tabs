@@ -135,9 +135,9 @@ class IframeTabsServiceProvider extends ServiceProvider
         $session = request()->session();
 
         if ($method == 'get') {
-            $_ifraem_id_ = $session->pull('_ifraem_id_', '');
+            $_iframe_id_ = $session->pull('_iframe_id_', '');
             $after_save = $session->pull('after_save', '');
-            if ($_ifraem_id_ && $session->has('toastr')) {
+            if ($_iframe_id_ && $session->has('toastr')) {
 
                 if ($session->has('toastr')) {
                     $toastr = $session->get('toastr');
@@ -145,7 +145,7 @@ class IframeTabsServiceProvider extends ServiceProvider
                     $message = Arr::get($toastr->get('message'), 0, '');
 
                     if ($type == 'success') {
-                        $session->put('_list_ifraem_id_', $_ifraem_id_);
+                        $session->put('_list_iframe_id_', $_iframe_id_);
                         $session->put('_list_after_save_', $after_save);
                         $session->put('_success_message_', $message);
                     }
@@ -153,14 +153,14 @@ class IframeTabsServiceProvider extends ServiceProvider
             }
         } else if ($method == 'put' || $method == 'post') {
 
-            $post_ifraem_id_ = request()->input('_ifraem_id_', '');
+            $post_iframe_id_ = request()->input('_iframe_id_', '');
 
             $post_after_save = request()->input('after-save', '');
 
-            if ($post_ifraem_id_) {
-                $session->put('_ifraem_id_', $post_ifraem_id_);
+            if ($post_iframe_id_) {
+                $session->put('_iframe_id_', $post_iframe_id_);
             } else {
-                $session->forget('_ifraem_id_');
+                $session->forget('_iframe_id_');
             }
 
             if ($post_after_save) {
@@ -177,19 +177,19 @@ class IframeTabsServiceProvider extends ServiceProvider
 
         $_pjax = request()->input('_pjax', '');
 
-        $_ifraem_id_ = request()->input('_ifraem_id_', '');
-        $_list_ifraem_id_ = $session->pull('_list_ifraem_id_', '');
+        $_iframe_id_ = request()->input('_iframe_id_', '');
+        $_list_iframe_id_ = $session->pull('_list_iframe_id_', '');
         $_success_message_ = $session->pull('_success_message_', 'success');
         $_list_after_save_ = $session->pull('_list_after_save_', '');
         $layer_size = IframeTabs::config('layer_size', '1100px,98%');
 
         $script = <<<EOT
 
-        var _ifraem_id_ = '{$_ifraem_id_}';
+        var _iframe_id_ = '{$_iframe_id_}';
 
         var _pjax = '{$_pjax}';
 
-        var _list_ifraem_id_ = '{$_list_ifraem_id_}';
+        var _list_iframe_id_ = '{$_list_iframe_id_}';
 
         var _list_after_save_ = '{$_list_after_save_}';
         
@@ -201,12 +201,12 @@ class IframeTabsServiceProvider extends ServiceProvider
 
         window.Pops = [];
 
-        if (_list_ifraem_id_ && !_list_after_save_)
+        if (_list_iframe_id_ && !_list_after_save_)
         {
             var iframes = top.document.getElementsByTagName("iframe");
             for(var i in iframes)
             {
-                if (iframes[i].id == _list_ifraem_id_)
+                if (iframes[i].id == _list_iframe_id_)
                 {
                     var openner = iframes[i].contentWindow;
 
@@ -239,9 +239,9 @@ class IframeTabsServiceProvider extends ServiceProvider
             return;
         }
 
-        if(_ifraem_id_ && $('form').size())
+        if(_iframe_id_ && $('form').size())
         {
-            $('form').append('<input type="hidden" name="_ifraem_id_" value="' + _ifraem_id_ + '" />');
+            $('form').append('<input type="hidden" name="_iframe_id_" value="' + _iframe_id_ + '" />');
         }
 
         if(!_pjax)
@@ -304,7 +304,7 @@ class IframeTabsServiceProvider extends ServiceProvider
                     // return true;
                     }
 
-                    url += (url.indexOf('?')>-1? '&':'?') + '_ifraem_id_=' + tab_id;
+                    url += (url.indexOf('?')>-1? '&':'?') + '_iframe_id_=' + tab_id;
 
                     tab_id = tab_id.replace(/^iframe_(.+)$/ ,'$1');
 

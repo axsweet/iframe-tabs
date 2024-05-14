@@ -55,9 +55,9 @@ class IframeTabsController extends Controller
     public function dashboard(Content $content)
     {
         return $content
-            ->header('Defautl page')
-            ->description('Defautl page')
-            ->body('Defautl page have not seted ,pleace edit config in `config/admin.php`'
+            ->header('Default page')
+            ->description('Default page')
+            ->body('Default page have not set ,pleace edit config in `config/admin.php`'
                 . "<pre>'extensions' => [
                 'iframe-tabs' => [
                      // Set to `false` if you want to disable this extension
