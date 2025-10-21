@@ -16,10 +16,40 @@ class IframeTabsController extends Controller
             return redirect(admin_base_path('dashboard'));
         }
 
+        // replace has() + session() with pull() to read-and-forget
+        $tab = session()->pull('admin_pending_tab');
+
+        if ($tab) {
+            $id = e($tab['id'] ?? 'pending_return_url');
+            $title = e($tab['title'] ?? 'Requested Page');
+            $url = e($tab['url'] ?? '');
+            $icon = e($tab['icon'] ?? 'fa-link');
+            $closable = !empty($tab['closable']);
+
+            Admin::script(<<<JS
+                document.addEventListener('DOMContentLoaded', function () {
+                    if (window.openTab && '$url') {
+                        window.openTab('$url', '$title', '$icon', '$id', $closable ? true : false, 'absolute');
+                    } else if (window.addTabs) {
+                        addTabs({
+                            id: '$id',
+                            title: '$title',
+                            close: $closable ? true : false,
+                            url: '$url',
+                            urlType: 'absolute',
+                            icon: '<i class="fa $icon"></i>'
+                        });
+                    } else if (window.location && '$url') {
+                        window.location.href = '$url';
+                    }
+                });
+            JS);
+        }
+
         $items = [
             'header' => '',
             'trans' => [
-                'oprations' => trans('admin.iframe_tabs.oprations'),
+                'operations' => trans('admin.iframe_tabs.operations'),
                 'refresh_current' => trans('admin.iframe_tabs.refresh_current'),
                 'close_current' => trans('admin.iframe_tabs.close_current'),
                 'close_all' => trans('admin.iframe_tabs.close_all'),

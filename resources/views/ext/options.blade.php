@@ -1,6 +1,6 @@
 <li class="tab-options">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        {{ $trans['oprations'] }}<i class="fa fa-caret-down" style="padding-left: 3px;"></i>
+        {{ $trans['operations'] }}<i class="fa fa-caret-down" style="padding-left: 3px;"></i>
     </a>
     <ul class="dropdown-menu">
         <li><a class="tabReload" href="javascript:;" onclick="refreshTab();">{{ $trans['refresh_current'] }}</a></li>
