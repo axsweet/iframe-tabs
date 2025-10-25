@@ -59,7 +59,7 @@ Add a config in `config/admin.php`:
             // bind click event of table actions [edit / view / create]  
             'bind_urls' => 'popup', //[ popup / new_tab / none]
             //table actions dom selected, [view / edit / create]buttons ,and any thing has class popup : <a class="popup" popw="400px" poph="200px" href="someurl">mylink</a>
-            'bind_selecter' => 'a.grid-row-view,a.grid-row-edit,.column-__actions__ ul.dropdown-menu a,.box-header .pull-right .btn-success,.popup',
+            'bind_selector' => 'a.grid-row-view,a.grid-row-edit,.column-__actions__ ul.dropdown-menu a,.box-header .pull-right .btn-success,.popup',
             //layer popup size
             'layer_size' => '1100px,98%',
             // if run web in `cli` mode ,for example `swoole` ,set it to true，如果是以命令行方式运行网站，如`swoole` 就设置为 true

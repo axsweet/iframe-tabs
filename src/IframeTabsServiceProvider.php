@@ -197,7 +197,7 @@ class IframeTabsServiceProvider extends ServiceProvider
 
         var bind_urls = window.bind_urls || top.bind_urls;
 
-        var bind_selecter = window.bind_selecter || top.bind_selecter;
+        var bind_selector = window.bind_selector || top.bind_selector;
 
         window.Pops = [];
 
@@ -273,10 +273,10 @@ class IframeTabsServiceProvider extends ServiceProvider
                 }
             });
 
-            if ((bind_urls =='new_tab' || bind_urls =='popup') && bind_selecter)
+            if ((bind_urls =='new_tab' || bind_urls =='popup') && bind_selector)
             {
                 
-                $('body').on('click', bind_selecter, function() {
+                $('body').on('click', bind_selector, function() {
                     var url = $(this).attr('href');
                     if (!url || url == '#' || /^javascript|\(|\)/i.test(url)) {
                         return;
